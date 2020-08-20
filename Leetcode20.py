@@ -5,7 +5,7 @@
 # Date  : 2020-08-14
 
 class Solution(object):
-    def isValid(self, s):
+    def isValid(self, s: str) -> bool:
         if len(s) == 0:
             return True
         dict = [s[0]]
