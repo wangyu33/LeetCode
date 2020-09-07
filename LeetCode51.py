@@ -15,7 +15,7 @@ class Solution:
         def judge(row, col):
             for i in range(1, row):
                 for j in range(1, n + 1):
-                    if chess[i][j] == 'Q' and abs(i - row) == abs(j - col):
+                    if chess[i][j] == 'Q' and abs(i - row) == abs(j - col): 
                         return False
             return True
 
