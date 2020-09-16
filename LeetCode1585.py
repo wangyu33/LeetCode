@@ -4,24 +4,28 @@
 # Author: WangYu
 # Date  : 2020-09-14
 from collections import *
+import collections
 class Solution:
     def isTransformable(self, s: str, t: str) -> bool:
         if Counter(s) != Counter(t):
             return False
 
-        cnt = [0] * 10
-        dn2cnt = defaultdict(deque)
-        for i, c in enumerate(t):
-            n = ord(c) - ord('0')
-            dn2cnt[n].append(cnt[:])
-            cnt[n] += 1
+        n = len(s)
+        pos = {i: collections.deque() for i in range(10)}
+        for i, digit in enumerate(s):
+            pos[int(digit)].append(i)
 
-        cnt = [0] * 10
-        for i, c in enumerate(s):
-            n = ord(c) - ord('0')
-            cnt1 = dn2cnt[n].popleft()
-            for j in range(n + 1, 10):
-                if cnt[j] < cnt1[j]:
-                    return False
-            cnt[n] += 1
+        for i, digit in enumerate(t):
+            d = int(digit)
+            if not pos[d]:
+                return False
+            if any(pos[j] and pos[j][0] < pos[d][0] for j in range(d)):
+                return False
+            pos[d].popleft()
+
         return True
+
+S= Solution()
+s = "34521"
+t = "23415"
+print(S.isTransformable(s,t))
