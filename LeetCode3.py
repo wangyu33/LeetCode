@@ -18,7 +18,7 @@ class solution(object):
                 dict[s[i]] = i
             print(ans,flag)
         return ans
-
+import bisect.bisect
 def main():
     s = "au"
     print(solution().lengthOfLongestSubstring(s))

@@ -3,7 +3,7 @@
 # File  : LeetCode62.py
 # Author: WangYu
 # Date  : 2021/3/2
-
+from bisect import insort_left
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         dp = [[0]*n for _ in range(m)]
